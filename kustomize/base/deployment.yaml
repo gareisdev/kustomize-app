@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-api
+spec:
+  selector:
+    matchLabels:
+      app: podinfo-api
+  template:
+    metadata:
+      labels:
+        app: podinfo-api
+    spec:
+      containers:
+      - name: podinfo-api
+        image: mypodinfo:v1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
